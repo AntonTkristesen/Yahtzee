@@ -1,0 +1,14 @@
+C:\Users\AntonTK\source\repos\Yahtzee\Yahtzee\bin\Debug\net8.0\Yahtzee.exe
+C:\Users\AntonTK\source\repos\Yahtzee\Yahtzee\bin\Debug\net8.0\Yahtzee.deps.json
+C:\Users\AntonTK\source\repos\Yahtzee\Yahtzee\bin\Debug\net8.0\Yahtzee.runtimeconfig.json
+C:\Users\AntonTK\source\repos\Yahtzee\Yahtzee\bin\Debug\net8.0\Yahtzee.dll
+C:\Users\AntonTK\source\repos\Yahtzee\Yahtzee\bin\Debug\net8.0\Yahtzee.pdb
+C:\Users\AntonTK\source\repos\Yahtzee\Yahtzee\obj\Debug\net8.0\Yahtzee.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\AntonTK\source\repos\Yahtzee\Yahtzee\obj\Debug\net8.0\Yahtzee.AssemblyInfoInputs.cache
+C:\Users\AntonTK\source\repos\Yahtzee\Yahtzee\obj\Debug\net8.0\Yahtzee.AssemblyInfo.cs
+C:\Users\AntonTK\source\repos\Yahtzee\Yahtzee\obj\Debug\net8.0\Yahtzee.csproj.CoreCompileInputs.cache
+C:\Users\AntonTK\source\repos\Yahtzee\Yahtzee\obj\Debug\net8.0\Yahtzee.dll
+C:\Users\AntonTK\source\repos\Yahtzee\Yahtzee\obj\Debug\net8.0\refint\Yahtzee.dll
+C:\Users\AntonTK\source\repos\Yahtzee\Yahtzee\obj\Debug\net8.0\Yahtzee.pdb
+C:\Users\AntonTK\source\repos\Yahtzee\Yahtzee\obj\Debug\net8.0\Yahtzee.genruntimeconfig.cache
+C:\Users\AntonTK\source\repos\Yahtzee\Yahtzee\obj\Debug\net8.0\ref\Yahtzee.dll
