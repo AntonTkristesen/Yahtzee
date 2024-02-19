@@ -56,13 +56,10 @@ namespace Yahtzee
 
                 if (roll < 2)
                 {
-                    Console.WriteLine("Choose dice to keep (1-5), or 'r' to re-roll all:");
+                    Console.WriteLine("Choose dice to keep (1-5)");
                     var input = Console.ReadLine();
                     var savedDices = input.Split(',');
                     var savedDicesInts = savedDices.Select(int.Parse).ToArray();
-
-
-                    if (input.ToLower() == "r") continue;
 
                     SelectDiceToKeep(savedDicesInts);
                 }
@@ -90,7 +87,7 @@ namespace Yahtzee
                 if (index >= 0 && index < diceCup.Dice.Count)
                 {
                     diceToKeep.Add(diceCup.Dice[index]);
-                    Console.Write(index + 1 + " "); // Adjusted to match user expectation of 1-based indexing
+                    Console.Write(index + 1 + " ");
                 }
             }
             Console.WriteLine(); // To ensure output is nicely formatted

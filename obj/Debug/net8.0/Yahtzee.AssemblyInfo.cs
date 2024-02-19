@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Yahtzee")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9eef008cb6e7befd09f76156da59cf686d6eb5cb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1c78de8efd946634f65cefa5c0d714ef87e706b0")]
 [assembly: System.Reflection.AssemblyProductAttribute("Yahtzee")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Yahtzee")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
