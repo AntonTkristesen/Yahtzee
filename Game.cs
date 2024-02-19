@@ -4,128 +4,57 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Console;
+using Yahtzee3;
 
-namespace Yahtzee
+namespace Yahtzee3
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-
     public class Game
     {
-        private List<Player> players;
-        private DiceCup diceCup;
-        private ScoreCalculator scoreCalculator;
-        private Random random;
-        private int turnCount;
-        private const int MaxTurns = 13; // In standard Yahtzee there are 13 turns
+        private const int NUM_DICE = 5;
+        private const int NUM_ROUNDS = 13;
+        private const int MAX_REROLLS = 3;
+        private int[] dice = new int[NUM_DICE];
+        private Random random = new Random();
+        private Dictionary<string, int> scorecard = new Dictionary<string, int>();
+        Scoreboard sb = new Scoreboard();
+        Categories cat = new Categories();
 
-        public Game(List<string> playerNames)
+        public Game()
         {
-            players = playerNames.Select(name => new Player(name)).ToList();
-            diceCup = new DiceCup(5); // Yahtzee is played with 5 dice
-            scoreCalculator = new ScoreCalculator();
-            random = new Random();
-            turnCount = 0;
+            sb.InitializeScorecard();
         }
 
-        public void Start()
+
+
+        public void Play()
         {
-            while (turnCount < MaxTurns)
+            Dice diceClass = new Dice();
+            for (int round = 1; round <= NUM_ROUNDS; round++)
             {
-                foreach (var player in players)
+                WriteLine($"\nRound {round}:");
+
+                int rerollsLeft = MAX_REROLLS;
+                Array.Clear(dice, 0, dice.Length);
+
+                do
                 {
-                    PlayTurn(player);
-                }
-                turnCount++;
+                    diceClass.RollDice();
+
+                    WriteLine($"Your roll: {string.Join(", ", dice)}");
+
+                    if (rerollsLeft > 0)
+                    {
+                        WriteLine($"Rerolls left: {rerollsLeft}");
+                        diceClass.RerollDice();
+                    }
+
+                    rerollsLeft--;
+                } while (rerollsLeft > 0);
+
+                cat.ScoreCategory();
+
+                sb.DisplayScorecard();
             }
-
-            Player winner = DetermineWinner();
-            Console.WriteLine($"Winner is {winner.Name} with a total score of {winner.Scorecard.CalculateTotalScore()}!");
-        }
-
-        private void PlayTurn(Player player)
-        {
-            Console.WriteLine($"{player.Name}'s turn:");
-
-            // Allow the player to roll the dice up to 3 times
-            for (int roll = 0; roll < 3; roll++)
-            {
-                diceCup.RollAll(random);
-                DisplayDice();
-
-                if (roll < 2)
-                {
-                    Console.WriteLine("Choose dice to keep (1-5)");
-                    var input = Console.ReadLine();
-                    var savedDices = input.Split(',');
-                    var savedDicesInts = savedDices.Select(int.Parse).ToArray();
-
-                    SelectDiceToKeep(savedDicesInts);
-                }
-            }
-
-            ChooseCombination(player);
-        }
-
-        private void DisplayDice()
-        {
-            Console.WriteLine("Dice: " + string.Join(", ", diceCup.Dice.Select(d => d.Value)));
-        }
-
-        private void SelectDiceToKeep(int[] savedDices)
-        {
-            // Adjusting user input to match zero-based indexing
-            var indicesToKeep = savedDices.Select(i => i - 1).ToList();
-
-            // Create a new list to hold the dice to keep
-            List<Die> diceToKeep = new List<Die>();
-
-            // Add the selected dice to the new list
-            foreach (int index in indicesToKeep)
-            {
-                if (index >= 0 && index < diceCup.Dice.Count)
-                {
-                    diceToKeep.Add(diceCup.Dice[index]);
-                    Console.Write(index + 1 + " ");
-                }
-            }
-            Console.WriteLine(); // To ensure output is nicely formatted
-
-            // Clear the diceCup and add the kept dice back
-            diceCup.Dice.Clear();
-            diceCup.Dice.AddRange(diceToKeep);
-
-            // Refill the dice cup to ensure there are 5 dice
-            while (diceCup.Dice.Count < 5)
-            {
-                diceCup.Dice.Add(new Die());
-            }
-        }
-
-
-        private void ChooseCombination(Player player)
-        {
-            Console.WriteLine("Choose a combination to score:");
-            var combination = Console.ReadLine();
-
-            if (player.Scorecard.Scores.ContainsKey(combination) && player.Scorecard.Scores[combination] == -1)
-            {
-                var score = scoreCalculator.CalculateScore(combination, diceCup.Dice.Select(d => d.Value).ToList());
-                player.Scorecard.SetScore(combination, score);
-                Console.WriteLine($"Scored {score} points for {combination}.");
-            }
-            else
-            {
-                Console.WriteLine("Invalid combination or already scored. Please choose another.");
-                ChooseCombination(player); // Recursive call for simplicity
-            }
-        }
-
-        private Player DetermineWinner()
-        {
-            return players.OrderByDescending(p => p.Scorecard.CalculateTotalScore()).First();
         }
     }
-
 }
