@@ -47,46 +47,29 @@ namespace Yahtzee
         private void PlayTurn(Player player)
         {
             Console.WriteLine($"{player.Name}'s turn:");
-            bool[] diceKept = new bool[5]; // Tracks which dice are kept. False means the die will be rolled.
 
             // Allow the player to roll the dice up to 3 times
             for (int roll = 0; roll < 3; roll++)
             {
-                // Roll only the dice that have not been kept
-                for (int i = 0; i < diceCup.Dice.Count; i++)
-                {
-                    if (!diceKept[i])
-                    {
-                        diceCup.Dice[i].Roll(random);
-                    }
-                }
+                diceCup.RollAll(random);
                 DisplayDice();
 
-                if (roll < 2) // No need to choose dice to keep after the last roll
+                if (roll < 2)
                 {
                     Console.WriteLine("Choose dice to keep (1-5), or 'r' to re-roll all:");
                     var input = Console.ReadLine();
+                    var savedDices = input.Split(',');
+                    var savedDicesInts = savedDices.Select(int.Parse).ToArray();
 
-                    if (input.ToLower() == "r")
-                    {
-                        Array.Fill(diceKept, false); // Reset the kept dice if re-rolling all
-                        continue;
-                    }
 
-                    var savedDices = input.Split(',').Select(x => int.Parse(x.Trim()) - 1).ToList(); // Adjust for zero-based index
-                    foreach (var index in savedDices)
-                    {
-                        if (index >= 0 && index < 5)
-                        {
-                            diceKept[index] = true; // Mark the selected dice as kept
-                        }
-                    }
+                    if (input.ToLower() == "r") continue;
+
+                    SelectDiceToKeep(savedDicesInts);
                 }
             }
 
             ChooseCombination(player);
         }
-
 
         private void DisplayDice()
         {
