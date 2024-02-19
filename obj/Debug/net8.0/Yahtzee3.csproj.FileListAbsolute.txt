@@ -1,0 +1,14 @@
+E:\Desktop\antonogmikkelskalhavehjælp\Yahtzee3\bin\Debug\net8.0\Yahtzee3.exe
+E:\Desktop\antonogmikkelskalhavehjælp\Yahtzee3\bin\Debug\net8.0\Yahtzee3.deps.json
+E:\Desktop\antonogmikkelskalhavehjælp\Yahtzee3\bin\Debug\net8.0\Yahtzee3.runtimeconfig.json
+E:\Desktop\antonogmikkelskalhavehjælp\Yahtzee3\bin\Debug\net8.0\Yahtzee3.dll
+E:\Desktop\antonogmikkelskalhavehjælp\Yahtzee3\bin\Debug\net8.0\Yahtzee3.pdb
+E:\Desktop\antonogmikkelskalhavehjælp\Yahtzee3\obj\Debug\net8.0\Yahtzee3.GeneratedMSBuildEditorConfig.editorconfig
+E:\Desktop\antonogmikkelskalhavehjælp\Yahtzee3\obj\Debug\net8.0\Yahtzee3.AssemblyInfoInputs.cache
+E:\Desktop\antonogmikkelskalhavehjælp\Yahtzee3\obj\Debug\net8.0\Yahtzee3.AssemblyInfo.cs
+E:\Desktop\antonogmikkelskalhavehjælp\Yahtzee3\obj\Debug\net8.0\Yahtzee3.csproj.CoreCompileInputs.cache
+E:\Desktop\antonogmikkelskalhavehjælp\Yahtzee3\obj\Debug\net8.0\Yahtzee3.dll
+E:\Desktop\antonogmikkelskalhavehjælp\Yahtzee3\obj\Debug\net8.0\refint\Yahtzee3.dll
+E:\Desktop\antonogmikkelskalhavehjælp\Yahtzee3\obj\Debug\net8.0\Yahtzee3.pdb
+E:\Desktop\antonogmikkelskalhavehjælp\Yahtzee3\obj\Debug\net8.0\Yahtzee3.genruntimeconfig.cache
+E:\Desktop\antonogmikkelskalhavehjælp\Yahtzee3\obj\Debug\net8.0\ref\Yahtzee3.dll

@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Desktop\\antonogmikkelskalhavehjælp\\Yahtzee\\Yahtzee.csproj": {}
+    "E:\\Desktop\\antonogmikkelskalhavehjælp\\Yahtzee\\Yahtzee3.csproj": {}
   },
   "projects": {
-    "E:\\Desktop\\antonogmikkelskalhavehjælp\\Yahtzee\\Yahtzee.csproj": {
+    "E:\\Desktop\\antonogmikkelskalhavehjælp\\Yahtzee\\Yahtzee3.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Desktop\\antonogmikkelskalhavehjælp\\Yahtzee\\Yahtzee.csproj",
-        "projectName": "Yahtzee",
-        "projectPath": "E:\\Desktop\\antonogmikkelskalhavehjælp\\Yahtzee\\Yahtzee.csproj",
+        "projectUniqueName": "E:\\Desktop\\antonogmikkelskalhavehjælp\\Yahtzee\\Yahtzee3.csproj",
+        "projectName": "Yahtzee3",
+        "projectPath": "E:\\Desktop\\antonogmikkelskalhavehjælp\\Yahtzee\\Yahtzee3.csproj",
         "packagesPath": "C:\\Users\\asger\\.nuget\\packages\\",
         "outputPath": "E:\\Desktop\\antonogmikkelskalhavehjælp\\Yahtzee\\obj\\",
         "projectStyle": "PackageReference",
