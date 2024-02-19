@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Console;
 
 namespace Yahtzee
 {
@@ -46,48 +47,82 @@ namespace Yahtzee
         private void PlayTurn(Player player)
         {
             Console.WriteLine($"{player.Name}'s turn:");
+            bool[] diceKept = new bool[5]; // Tracks which dice are kept. False means the die will be rolled.
 
             // Allow the player to roll the dice up to 3 times
             for (int roll = 0; roll < 3; roll++)
             {
-                diceCup.RollAll(random);
+                // Roll only the dice that have not been kept
+                for (int i = 0; i < diceCup.Dice.Count; i++)
+                {
+                    if (!diceKept[i])
+                    {
+                        diceCup.Dice[i].Roll(random);
+                    }
+                }
                 DisplayDice();
 
-                if (roll < 2)
+                if (roll < 2) // No need to choose dice to keep after the last roll
                 {
                     Console.WriteLine("Choose dice to keep (1-5), or 'r' to re-roll all:");
                     var input = Console.ReadLine();
-                    if (input.ToLower() == "r") continue;
 
-                    SelectDiceToKeep(input);
+                    if (input.ToLower() == "r")
+                    {
+                        Array.Fill(diceKept, false); // Reset the kept dice if re-rolling all
+                        continue;
+                    }
+
+                    var savedDices = input.Split(',').Select(x => int.Parse(x.Trim()) - 1).ToList(); // Adjust for zero-based index
+                    foreach (var index in savedDices)
+                    {
+                        if (index >= 0 && index < 5)
+                        {
+                            diceKept[index] = true; // Mark the selected dice as kept
+                        }
+                    }
                 }
             }
 
             ChooseCombination(player);
         }
 
+
         private void DisplayDice()
         {
             Console.WriteLine("Dice: " + string.Join(", ", diceCup.Dice.Select(d => d.Value)));
         }
 
-        private void SelectDiceToKeep(string input)
+        private void SelectDiceToKeep(int[] savedDices)
         {
-            var indicesToKeep = input.Select(c => c - '1').Where(i => i >= 0 && i < diceCup.Dice.Count);
+            // Adjusting user input to match zero-based indexing
+            var indicesToKeep = savedDices.Select(i => i - 1).ToList();
 
-            var newDiceCup = new DiceCup(0);
+            // Create a new list to hold the dice to keep
+            List<Die> diceToKeep = new List<Die>();
+
+            // Add the selected dice to the new list
             foreach (int index in indicesToKeep)
             {
-                newDiceCup.Dice.Add(diceCup.Dice[index]);
+                if (index >= 0 && index < diceCup.Dice.Count)
+                {
+                    diceToKeep.Add(diceCup.Dice[index]);
+                    Console.Write(index + 1 + " "); // Adjusted to match user expectation of 1-based indexing
+                }
             }
+            Console.WriteLine(); // To ensure output is nicely formatted
 
-            for (int i = newDiceCup.Dice.Count; i < 5; i++)
+            // Clear the diceCup and add the kept dice back
+            diceCup.Dice.Clear();
+            diceCup.Dice.AddRange(diceToKeep);
+
+            // Refill the dice cup to ensure there are 5 dice
+            while (diceCup.Dice.Count < 5)
             {
-                newDiceCup.Dice.Add(new Die());
+                diceCup.Dice.Add(new Die());
             }
-
-            diceCup = newDiceCup;
         }
+
 
         private void ChooseCombination(Player player)
         {
