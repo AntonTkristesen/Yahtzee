@@ -157,10 +157,10 @@ namespace YahtzeeGame
                     score = FullHouse();
                     break;
                 case 10:
-                    score = SmallStraight();
+                    score = Straights(3, 30);
                     break;
                 case 11:
-                    score = LargeStraight();
+                    score = Straights(4, 40);
                     break;
                 case 12:
                     score = Yahtzee();
@@ -203,20 +203,26 @@ namespace YahtzeeGame
                 return 0;
         }
 
-        private int SmallStraight()
+        private int Straights(int n, int points)
         {
-            if (dice.Distinct().OrderBy(x => x).Select((value, index) => value - index).Distinct().Count() >= 4)
-                return 30;
-            else
-                return 0;
-        }
+            var distinctDice = dice.Distinct().OrderBy(x => x).ToList();
+            int count = 0;
 
-        private int LargeStraight()
-        {
-            if (dice.Distinct().OrderBy(x => x).Select((value, index) => value - index).Distinct().Count() == 5)
-                return 40;
-            else
-                return 0;
+            for (int i = 0; i < distinctDice.Count - 1; i++)
+            {
+                if (distinctDice[i] + 1 == distinctDice[i + 1])
+                {
+                    count++;
+                    if (count >= n)
+                        return points;
+                }
+                else
+                {
+                    count = 0;
+                }
+            }
+
+            return 0;
         }
 
         private int Yahtzee()

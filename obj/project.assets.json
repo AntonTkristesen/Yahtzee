@@ -8,24 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\asger\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\HFGF\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Desktop\\antonogmikkelskalhavehjælp\\Yahtzee\\Yahtzee.csproj",
+      "projectUniqueName": "C:\\h1opgaver\\Yahtzee-master\\Yahtzee\\Yahtzee.csproj",
       "projectName": "Yahtzee",
-      "projectPath": "E:\\Desktop\\antonogmikkelskalhavehjælp\\Yahtzee\\Yahtzee.csproj",
-      "packagesPath": "C:\\Users\\asger\\.nuget\\packages\\",
-      "outputPath": "E:\\Desktop\\antonogmikkelskalhavehjælp\\Yahtzee\\obj\\",
+      "projectPath": "C:\\h1opgaver\\Yahtzee-master\\Yahtzee\\Yahtzee.csproj",
+      "packagesPath": "C:\\Users\\HFGF\\.nuget\\packages\\",
+      "outputPath": "C:\\h1opgaver\\Yahtzee-master\\Yahtzee\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\asger\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\HFGF\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
