@@ -10,7 +10,6 @@ namespace YahtzeeGame
 {
     public class Dice
     {
-        //YahtzeeGame y = new YahtzeeGame();
         public Random random = new Random();
         public int[] dice = new int[YahtzeeGame.NUM_DICE];
 
