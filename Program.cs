@@ -98,8 +98,7 @@ namespace YahtzeeGame
             string userInput = ReadLine();
             string input = userInput.ToLower();
 
-            if (input == "n")
-            {
+            if (input == "n") {
                 Array.Clear(dice, 0, dice.Length);
 
                 return;
