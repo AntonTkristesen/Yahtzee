@@ -109,7 +109,7 @@ namespace YahtzeeGame
 
         private void ScoreCategory()
             {
-                WriteLine("\nChoose a category to score:");
+                WriteLine("\nChoose a category to scre:");
                 foreach (var category in scorecard.Keys)
                 {
                     if (scorecard[category] == -1)
