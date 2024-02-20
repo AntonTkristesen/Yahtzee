@@ -24,7 +24,7 @@ namespace YahtzeeGame
     public class YahtzeeGame
     {
         private const int NUM_DICE = 5;
-        private const int NUM_ROUNDS = 2;
+        private const int NUM_ROUNDS = 13;
         private const int MAX_REROLLS = 3;
         private int[] dice = new int[NUM_DICE];
         private Random random = new Random();
