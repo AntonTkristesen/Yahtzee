@@ -94,8 +94,16 @@ namespace YahtzeeGame
 
         private void RerollDice()
         {
-            WriteLine("Enter the indices of dice you want to keep (1-5), separated by commas (e.g., 1,3,5):");
-            string input = ReadLine();
+            WriteLine("Enter the indices of dice you want to keep (1-5), separated by commas (e.g., 1,3,5), or type n to keep none:");
+            string userInput = ReadLine();
+            string input = userInput.ToLower();
+
+            if (input == "n") {
+                Array.Clear(dice, 0, dice.Length);
+
+                return;
+            }
+
             if (!string.IsNullOrWhiteSpace(input))
             {
                 var indicesToKeep = input.Split(',').Select(s => int.Parse(s.Trim()));
