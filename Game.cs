@@ -11,7 +11,6 @@ namespace YahtzeeGame
     public class Game
     {
         public static Dice d = new Dice();
-        YahtzeeGame y = new YahtzeeGame();
         Categories c = new Categories();
         public void Play()
         {
