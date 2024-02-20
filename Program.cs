@@ -94,16 +94,8 @@ namespace YahtzeeGame
 
         private void RerollDice()
         {
-            WriteLine("Enter the indices of dice you want to keep (1-5), separated by commas (e.g., 1,3,5), or type n to keep none:");
-            string userInput = ReadLine();
-            string input = userInput.ToLower();
-
-            if (input == "n") {
-                Array.Clear(dice, 0, dice.Length);
-
-                return;
-            }
-
+            WriteLine("Enter the indices of dice you want to keep (1-5), separated by commas (e.g., 1,3,5):");
+            string input = ReadLine();
             if (!string.IsNullOrWhiteSpace(input))
             {
                 var indicesToKeep = input.Split(',').Select(s => int.Parse(s.Trim()));
@@ -205,10 +197,24 @@ namespace YahtzeeGame
 
         private int SmallStraight()
         {
-            if (dice.Distinct().OrderBy(x => x).Select((value, index) => value - index).Distinct().Count() >= 4)
-                return 30;
-            else
-                return 0;
+            var distinctDice = dice.Distinct().OrderBy(x => x).ToList();
+            int count = 0;
+
+            for (int i = 0; i < distinctDice.Count - 1; i++)
+            {
+                if (distinctDice[i] + 1 == distinctDice[i + 1])
+                {
+                    count++;
+                    if (count == 3) 
+                        return 30;
+                }
+                else
+                {
+                    count = 0;
+                }
+            }
+
+            return 0; 
         }
 
         private int LargeStraight()
