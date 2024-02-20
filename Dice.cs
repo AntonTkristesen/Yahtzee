@@ -4,17 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Console;
+using YahtzeeGame;
 
-namespace Yahtzee3
+namespace YahtzeeGame
 {
     public class Dice
     {
-        private const int NUM_DICE = 5;
-        private int[] dice = new int[NUM_DICE];
-        private Random random = new Random();
+        //YahtzeeGame y = new YahtzeeGame();
+        public Random random = new Random();
+        public int[] dice = new int[YahtzeeGame.NUM_DICE];
+
         public void RollDice()
         {
-            for (int i = 0; i < NUM_DICE; i++)
+            for (int i = 0; i < YahtzeeGame.NUM_DICE; i++)
             {
                 if (dice[i] == 0)
                     dice[i] = random.Next(1, 7);
@@ -23,12 +25,21 @@ namespace Yahtzee3
 
         public void RerollDice()
         {
-            WriteLine("Enter the indices of dice you want to keep (1-5), separated by commas (e.g., 1,3,5):");
-            string input = ReadLine();
+            WriteLine("Enter the indices of dice you want to keep (1-5), separated by commas (e.g., 1,3,5), or type n to keep none:");
+            string userInput = ReadLine();
+            string input = userInput.ToLower();
+
+            if (input == "n")
+            {
+                Array.Clear(dice, 0, dice.Length);
+
+                return;
+            }
+
             if (!string.IsNullOrWhiteSpace(input))
             {
                 var indicesToKeep = input.Split(',').Select(s => int.Parse(s.Trim()));
-                for (int i = 0; i < NUM_DICE; i++)
+                for (int i = 0; i < YahtzeeGame.NUM_DICE; i++)
                 {
                     if (!indicesToKeep.Contains(i + 1))
                         dice[i] = 0;
